@@ -26,5 +26,8 @@ module MuseGate
         request_specs: false)
       g.fixture_replacement :factory_girl, dir: "spec/factories"
     end
+
+    # use slim template default
+    config.generators.template_engine = :slim
   end
 end
