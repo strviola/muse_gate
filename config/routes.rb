@@ -7,5 +7,6 @@ Rails.application.routes.draw do
 
     # ログイン・ログアウト
     resource :sessions, only: [:new, :create, :destroy]
+    resources :reservations
   end
 end

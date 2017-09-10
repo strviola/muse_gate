@@ -17,9 +17,9 @@
 
 FactoryGirl.define do
   factory :address do
-    postcode "MyString"
-    prefecture ""
-    city "MyString"
-    detail "MyString"
+    postcode '1000005'
+    prefecture_id 13
+    city '千代田区'
+    detail '丸の内一丁目'
   end
 end

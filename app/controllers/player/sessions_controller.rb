@@ -6,11 +6,11 @@ class Player::SessionsController < ApplicationController
 
   # log in
   def create
-    account = Account.find_by(name: params[:name])
-    if account&.player? && account&.authenticate(params[:password])
-      session[:account] = account
+    account = Account.find_by(name: session_params[:name])
+    if account&.player? && account&.authenticate(session_params[:password])
+      session[:account_id] = account.id
       session[:role] = 'player'
-      redirect_to '' # TODO: トップ画面
+      redirect_to player_reservations_path
     else
       render :new
     end
@@ -19,5 +19,11 @@ class Player::SessionsController < ApplicationController
   # log out
   def destroy
     log_out
+  end
+
+  private
+
+  def session_params
+    params.require(:session).permit(:name, :password)
   end
 end

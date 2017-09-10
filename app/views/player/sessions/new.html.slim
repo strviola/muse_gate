@@ -1,6 +1,6 @@
 h1 ログイン
 
-= form_for :session, url: 'sessions/create' do |f|
+= form_for :session, url: { controller: :sessions, action: :create } do |f|
   table
     tbody
       tr

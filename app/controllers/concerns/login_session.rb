@@ -10,10 +10,11 @@ module LoginSession
     end
 
     def current_account
-      account = session[:account]
+      account_id = session[:account_id]
       role = session[:role]
-      return if account.nil? || role.nil? || account.role != role
-      account
+      @account ||= Account.find_by(id: account_id)
+      return if @account.nil? || role.nil? || @account.role != role
+      @account
     end
 
     def log_out
