@@ -16,6 +16,8 @@ gem 'bcrypt', '~> 3.1.7'
 gem 'slim'
 gem 'annotate'
 gem 'dotenv-rails'
+gem 'hirb'
+gem 'hirb-unicode'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]

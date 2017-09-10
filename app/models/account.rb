@@ -12,4 +12,10 @@
 #
 
 class Account < ApplicationRecord
+  has_secure_password
+
+  validates :name, presence: true
+  validates :role, presence: true
+
+  enum role: { player: 1, host: 2 }
 end
