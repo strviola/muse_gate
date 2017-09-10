@@ -13,9 +13,16 @@
 
 FactoryGirl.define do
   factory :account do
-    name "MyString"
-    email "MyString"
-    password_digest "MyString"
-    role 1
+    name { Faker::Lorem.word }
+    email { Faker::Internet.email }
+    password 'test1234'
+    password_confirmation 'test1234'
+    role :player
+
+    trait :player
+
+    trait :host do
+      role :host
+    end
   end
 end

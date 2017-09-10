@@ -1,4 +1,6 @@
 class Player::SessionsController < ApplicationController
+  include LoginSession
+
   def new
   end
 
@@ -16,5 +18,6 @@ class Player::SessionsController < ApplicationController
 
   # log out
   def destroy
+    log_out
   end
 end

@@ -15,5 +15,10 @@ module LoginSession
       return if account.nil? || role.nil? || account.role != role
       account
     end
+
+    def log_out
+      session.delete(:account)
+      session.delete(:role)
+    end
   end
 end
