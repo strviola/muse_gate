@@ -44,5 +44,8 @@ end
 
 group :production do
   gem 'pg'
-  gem 'database_cleaner' # TODO: 本番運用時には削除
+  # TODO: 本番運用時には削除
+  gem 'database_cleaner'
+  gem 'factory_girl_rails'
+  gem 'faker'
 end
