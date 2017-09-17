@@ -17,8 +17,8 @@
 
 FactoryGirl.define do
   factory :host do
-    account nil
-    name "MyString"
-    address nil
+    association :account, strategy: :build
+    association :address, strategy: :build
+    name { Faker::Name.name }
   end
 end
