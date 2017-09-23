@@ -8,8 +8,7 @@ class Player::SessionsController < ApplicationController
   def create
     account = Account.find_by(name: session_params[:name])
     if account&.player? && account&.authenticate(session_params[:password])
-      session[:account_id] = account.id
-      session[:role] = 'player'
+      save_session(account, 'player')
       redirect_to player_reservations_path
     else
       render :new
@@ -19,11 +18,5 @@ class Player::SessionsController < ApplicationController
   # log out
   def destroy
     log_out
-  end
-
-  private
-
-  def session_params
-    params.require(:session).permit(:name, :password)
   end
 end

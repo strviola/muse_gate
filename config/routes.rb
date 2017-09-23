@@ -1,16 +1,4 @@
 Rails.application.routes.draw do
-  namespace :host do
-    get 'sessions/new'
-  end
-
-  namespace :host do
-    get 'sessions/create'
-  end
-
-  namespace :host do
-    get 'sessions/destroy'
-  end
-
   root to: 'top#show'
 
   # 演奏者側
@@ -28,5 +16,6 @@ Rails.application.routes.draw do
 
     # ログイン・ログアウト
     resource :sessions, only: [:new, :create, :destroy]
+    get 'menu', to: 'menu#show'
   end
 end

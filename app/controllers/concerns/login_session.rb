@@ -21,5 +21,14 @@ module LoginSession
       session.delete(:account)
       session.delete(:role)
     end
+
+    def save_session(account, role)
+      session[:account_id] = account.id
+      session[:role] = role
+    end
+
+    def session_params
+      params.require(:session).permit(:name, :password)
+    end
   end
 end
