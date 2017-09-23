@@ -1,4 +1,4 @@
-class Host::MenuController < ApplicationController
+class Host::MenuController < Host::BaseController
   def show
   end
 end

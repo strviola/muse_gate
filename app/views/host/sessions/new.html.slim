@@ -1,2 +1,12 @@
-h1 Host::Sessions#new
-p Find me in app/views/host/sessions/new.html.slim
+h1 ログイン
+
+= form_for :session, url: { controller: :sessions, action: :create } do |f|
+  table
+    tbody
+      tr
+        td = f.label 'ログインID'
+        td = f.text_field :name
+      tr
+        td = f.label 'パスワード'
+        td = f.password_field :password
+  = f.submit 'ログイン'
