@@ -1,4 +1,4 @@
-class Player::SessionsController < ApplicationController
+class Host::SessionsController < ApplicationController
   include LoginSession
 
   def new
@@ -7,9 +7,9 @@ class Player::SessionsController < ApplicationController
   # log in
   def create
     account = Account.find_by(name: session_params[:name])
-    if account&.player? && account&.authenticate(session_params[:password])
-      save_session(account, 'player')
-      redirect_to player_reservations_path
+    if account&.host? && account&.authenticate(session_params[:password])
+      save_session(account, 'host')
+      redirect_to host_menu_path
     else
       render :new
     end
