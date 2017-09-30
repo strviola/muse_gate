@@ -18,4 +18,6 @@
 class Host < ApplicationRecord
   belongs_to :account
   belongs_to :address
+
+  has_many :rooms
 end
