@@ -18,6 +18,9 @@
 class Host < ApplicationRecord
   belongs_to :account
   belongs_to :address
-
   has_many :rooms
+
+  %i(account name address).each do |key|
+    validates key, presence: true
+  end
 end

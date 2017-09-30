@@ -20,4 +20,10 @@
 class Room < ApplicationRecord
   belongs_to :host
   belongs_to :address
+
+  %i(host name address).each do |key|
+    validates key, presence: true
+  end
+
+  accepts_nested_attributes_for :address
 end

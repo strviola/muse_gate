@@ -18,6 +18,10 @@
 class Address < ApplicationRecord
   belongs_to :prefecture
 
+  %i(postcode prefecture city detail).each do |key|
+    validates key, presence: true
+  end
+
   def full_name
     "#{prefecture.name} #{city} #{detail}"
   end
