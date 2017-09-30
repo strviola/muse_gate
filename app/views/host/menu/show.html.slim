@@ -1,3 +1,7 @@
 h1 ホストトップページ
 
 p = "ようこそ #{@host.name} さん"
+
+ul
+  li = link_to '練習会場を設定する', host_rooms_path
+  li = link_to '予約を確認する', '#'

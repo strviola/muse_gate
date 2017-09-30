@@ -1,0 +1,13 @@
+h1 練習会場一覧
+
+table
+  thead
+    tr
+      th 名前
+      th 詳細
+      th 住所
+  - @rooms.each do |room|
+    tr
+      td = room.name
+      td = room.description
+      td = room.address

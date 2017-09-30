@@ -1,5 +1,6 @@
-class Host::RoomsController < ApplicationController
+class Host::RoomsController < Host::BaseController
   def index
+    @rooms = current_host.rooms
   end
 
   def new
