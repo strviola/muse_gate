@@ -16,4 +16,9 @@
 #
 
 class Address < ApplicationRecord
+  belongs_to :prefecture
+
+  def full_name
+    "#{prefecture.name} #{city} #{detail}"
+  end
 end
