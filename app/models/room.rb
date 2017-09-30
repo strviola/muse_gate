@@ -4,6 +4,7 @@
 #
 #  id          :integer          not null, primary key
 #  host_id     :integer          not null
+#  name        :string           not null
 #  description :text
 #  address_id  :integer          not null
 #  has_piano   :boolean          not null

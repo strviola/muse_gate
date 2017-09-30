@@ -59,6 +59,7 @@ ActiveRecord::Schema.define(version: 20170930071058) do
 
   create_table "rooms", force: :cascade do |t|
     t.integer "host_id", null: false
+    t.string "name", null: false
     t.text "description"
     t.integer "address_id", null: false
     t.boolean "has_piano", null: false

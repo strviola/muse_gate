@@ -4,6 +4,7 @@
 #
 #  id          :integer          not null, primary key
 #  host_id     :integer          not null
+#  name        :string           not null
 #  description :text
 #  address_id  :integer          not null
 #  has_piano   :boolean          not null
@@ -19,6 +20,7 @@
 FactoryGirl.define do
   factory :room do
     association :host
+    sequence :name, '練習室.1'
     description { Faker::Lorem.sentence(30) }
     association :address
     has_piano false
