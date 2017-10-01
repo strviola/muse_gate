@@ -1,0 +1,27 @@
+= form_for [:host, room] do |f|
+  table
+    tbody
+      tr
+        td = f.label '練習室名'
+        td = f.text_field :name
+        = f.fields_for :address_attributes do |address_fields|
+          tr
+            td = address_fields.label '郵便番号'
+            td = address_fields.text_field :postcode
+          tr
+            td = address_fields.label '都道府県'
+            td
+              = address_fields.select :prefecture,
+                options_for_select(Prefecture.all.map { |pref| [pref.name, pref.id] }, selected: 13)
+          tr
+            td = address_fields.label '市区町村'
+            td = address_fields.text_field :city, placeholder: '(例) 横浜市西区'
+          tr
+            td = address_fields.label 'それ以降の住所'
+            td = address_fields.text_field :detail, placeholder: '(例) 高島2-16'
+      tr
+        td = '詳細 (省略可)'
+        td = f.text_area :description, size: '60x5'
+  = f.submit '送信'
+
+= link_to '戻る', host_rooms_path
