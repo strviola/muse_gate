@@ -16,10 +16,10 @@
                 selected: room.address&.prefecture_id || 13)
           tr
             td = address_fields.label '市区町村'
-            td = address_fields.text_field :city, placeholder: '(例) 横浜市西区'
+            td = address_fields.text_field :city, placeholder: '(例) 豊島区'
           tr
             td = address_fields.label 'それ以降の住所'
-            td = address_fields.text_field :detail, placeholder: '(例) 高島2-16'
+            td = address_fields.text_field :detail, placeholder: '(例) 南池袋1-28-2'
       tr
         td = '詳細 (省略可)'
         td = f.text_area :description, size: '60x5'
