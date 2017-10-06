@@ -25,6 +25,14 @@ class Host::RoomsController < Host::BaseController
   end
 
   def update
+    @room.attributes = room_params
+    if @room.save
+      flash[:success] = "練習室「#{@room.name}」が更新されました！"
+      redirect_to edit_host_room_path @room
+    else
+      flash[:errors] = '入力項目にエラーがあります'
+      render :edit
+    end
   end
 
   private
