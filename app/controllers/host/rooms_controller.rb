@@ -2,7 +2,7 @@ class Host::RoomsController < Host::BaseController
   before_action :find_room, only: [:edit, :update]
 
   def index
-    @rooms = current_host.rooms
+    @rooms = current_host.rooms.includes(address: :prefecture)
   end
 
   def new

@@ -6,10 +6,8 @@ table
   thead
     tr
       th 名前
-      th 詳細
       th 住所
   - @rooms.each do |room|
     tr
       td = link_to room.name, edit_host_room_path(room)
-      td = room.description
       td = room.address.full_name
