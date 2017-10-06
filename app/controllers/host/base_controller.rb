@@ -9,6 +9,6 @@ class Host::BaseController < ApplicationController
   end
 
   def current_host
-    @host = Host.find_by(account: current_account)
+    @host ||= Host.find_by(account: current_account)
   end
 end

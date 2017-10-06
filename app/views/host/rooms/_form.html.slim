@@ -11,7 +11,7 @@
           tr
             td = address_fields.label '都道府県'
             td
-              = address_fields.select :prefecture,
+              = address_fields.select :prefecture_id,
                 options_for_select(Prefecture.all.map { |pref| [pref.name, pref.id] }, selected: 13)
           tr
             td = address_fields.label '市区町村'
