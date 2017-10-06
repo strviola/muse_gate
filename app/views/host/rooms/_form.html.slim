@@ -4,7 +4,7 @@
       tr
         td = f.label '練習室名'
         td = f.text_field :name
-        = f.fields_for :address_attributes do |address_fields|
+        = f.fields_for :address_attributes, room.address do |address_fields|
           tr
             td = address_fields.label '郵便番号'
             td = address_fields.text_field :postcode
@@ -12,7 +12,8 @@
             td = address_fields.label '都道府県'
             td
               = address_fields.select :prefecture_id,
-                options_for_select(Prefecture.all.map { |pref| [pref.name, pref.id] }, selected: 13)
+                options_for_select(Prefecture.all.map { |pref| [pref.name, pref.id] },
+                selected: room.address&.prefecture_id || 13)
           tr
             td = address_fields.label '市区町村'
             td = address_fields.text_field :city, placeholder: '(例) 横浜市西区'
