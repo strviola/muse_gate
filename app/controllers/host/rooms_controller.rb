@@ -13,6 +13,7 @@ class Host::RoomsController < Host::BaseController
     @room = Room.new(room_params)
     @room.host = @host
     if @room.save
+      flash[:success] = "練習室「#{@room.name}」が登録されました！"
       redirect_to edit_host_room_path @room
     else
       flash.now[:errors] = '入力項目にエラーがあります' # TODO: あとでちゃんと表示
