@@ -1,6 +1,6 @@
 h1 新規練習室登録
 
 - if flash[:errors]
-  p = flash[:errors]
+  = render partial: 'errors', locals: { messages: @room.errors.full_messages }
 
 = render partial: 'form', locals: { room: @room }

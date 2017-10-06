@@ -16,7 +16,7 @@ class Host::RoomsController < Host::BaseController
       flash[:success] = "練習室「#{@room.name}」が登録されました！"
       redirect_to edit_host_room_path @room
     else
-      flash.now[:errors] = '入力項目にエラーがあります' # TODO: あとでちゃんと表示
+      flash.now[:errors] = @room.errors.full_messages
       render :new
     end
   end
@@ -30,7 +30,7 @@ class Host::RoomsController < Host::BaseController
       flash[:success] = "練習室「#{@room.name}」が更新されました！"
       redirect_to edit_host_room_path @room
     else
-      flash[:errors] = '入力項目にエラーがあります'
+      flash.now[:errors] = @room.errors.full_messages
       render :edit
     end
   end
