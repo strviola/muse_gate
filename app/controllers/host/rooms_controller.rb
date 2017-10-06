@@ -13,9 +13,9 @@ class Host::RoomsController < Host::BaseController
     @room = Room.new(room_params)
     @room.host = @host
     if @room.save
-      redirect_to action: :edit
+      redirect_to edit_host_room_path @room
     else
-      flash[:errors] = '入力項目にエラーがあります' # TODO: あとでちゃんと表示
+      flash.now[:errors] = '入力項目にエラーがあります' # TODO: あとでちゃんと表示
       render :new
     end
   end

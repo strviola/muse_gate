@@ -7,7 +7,7 @@
 #  name        :string           not null
 #  description :text
 #  address_id  :integer          not null
-#  has_piano   :boolean          not null
+#  has_piano   :boolean          default(FALSE), not null
 #  created_at  :datetime         not null
 #  updated_at  :datetime         not null
 #

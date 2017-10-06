@@ -62,7 +62,7 @@ ActiveRecord::Schema.define(version: 20170930071058) do
     t.string "name", null: false
     t.text "description"
     t.integer "address_id", null: false
-    t.boolean "has_piano", null: false
+    t.boolean "has_piano", default: false, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["address_id"], name: "index_rooms_on_address_id"
