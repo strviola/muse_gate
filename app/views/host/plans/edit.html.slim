@@ -1,1 +1,6 @@
 h1 プラン編集
+
+= form_for [:host, @plan] do |f|
+  = render partial: 'form', locals: { f: f }
+
+p = link_to '戻る', edit_host_room_path(@plan.room)

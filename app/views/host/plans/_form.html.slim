@@ -1,0 +1,15 @@
+table
+  tbody
+    tr
+      td = f.label 'プラン名'
+      td = f.text_field :name
+    tr
+      td = f.label 'コマあたり時間'
+      td = f.number_field :available_time
+    tr
+      td = f.label '価格'
+      td = f.number_field :price
+    tr
+      td = f.label '詳細説明 (省略可)'
+      td = f.text_area :description, size: '60x5'
+= f.submit '送信'

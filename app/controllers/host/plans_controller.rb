@@ -3,6 +3,7 @@ class Host::PlansController < Host::BaseController
   before_action :find_plan, only: [:edit, :update]
 
   def new
+    @plan = Plan.new
   end
 
   def create
