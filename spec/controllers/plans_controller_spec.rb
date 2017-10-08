@@ -1,5 +1,4 @@
 require 'rails_helper'
 
-RSpec.describe PlansController, type: :controller do
-
+RSpec.describe Host::PlansController, type: :controller do
 end
