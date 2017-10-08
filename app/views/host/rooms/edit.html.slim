@@ -1,0 +1,8 @@
+h1 練習室編集
+
+- if flash[:success]
+  p = flash[:success]
+- if flash[:errors]
+  = render partial: 'errors', locals: { messages: @room.errors.full_messages }
+
+= render partial: 'form', locals: { room: @room }

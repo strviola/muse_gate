@@ -17,5 +17,8 @@ Rails.application.routes.draw do
     # ログイン・ログアウト
     resource :sessions, only: [:new, :create, :destroy]
     get 'menu', to: 'menu#show'
+
+    # 練習会場管理
+    resources :rooms, only: [:index, :new, :create, :edit, :update]
   end
 end

@@ -1,0 +1,13 @@
+h1 練習会場一覧
+
+p = link_to '新規登録', new_host_room_path
+
+table
+  thead
+    tr
+      th 名前
+      th 住所
+  - @rooms.each do |room|
+    tr
+      td = link_to room.name, edit_host_room_path(room)
+      td = room.address.full_name

@@ -18,7 +18,8 @@ module MuseGate
     # spec configuration
     config.generators do |g|
       g.helper false
-      g.template_engine :slim
+      g.template_engine false
+      g.route false
       g.test_framework(:rspec,
         fixtures: true,
         view_specs: false,
