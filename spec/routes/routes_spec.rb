@@ -47,8 +47,8 @@ RSpec.describe 'Rounting', type: :routing do
     context 'plans' do
       it { expect(get: '/host/rooms/1/plans/new').to route_to controller: 'host/plans', action: 'new', room_id: '1' }
       it { expect(post: '/host/rooms/1/plans').to route_to controller: 'host/plans', action: 'create', room_id: '1' }
-      it { expect(get: '/host/rooms/1/plans/1/edit').to route_to controller: 'host/plans', action: 'edit', room_id: '1', id: '1' }
-      it { expect(patch: '/host/rooms/1/plans/1').to route_to controller: 'host/plans', action: 'update', room_id: '1', id: '1' }
+      it { expect(get: '/host/plans/1/edit').to route_to controller: 'host/plans', action: 'edit', id: '1' }
+      it { expect(patch: '/host/plans/1').to route_to controller: 'host/plans', action: 'update', id: '1' }
     end
   end
 end
