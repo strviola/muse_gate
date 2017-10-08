@@ -20,6 +20,7 @@
 class Room < ApplicationRecord
   belongs_to :host
   belongs_to :address
+  has_many :plans
 
   %i(host name address).each do |key|
     validates key, presence: true

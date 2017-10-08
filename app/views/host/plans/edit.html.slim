@@ -1,0 +1,11 @@
+h1 プラン編集
+
+- if flash[:success]
+  p = flash[:success]
+- if flash[:errors]
+  = render partial: 'errors', locals: { messages: flash[:errors] }
+
+= form_for [:host, @plan] do |f|
+  = render partial: 'form', locals: { f: f }
+
+p = link_to '戻る', edit_host_room_path(@plan.room)
