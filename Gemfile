@@ -14,11 +14,11 @@ gem 'jbuilder', '~> 2.5'
 gem 'redis', '~> 3.0'
 gem 'bcrypt', '~> 3.1.7'
 gem 'slim'
-gem 'slim-rails'
 gem 'annotate'
 gem 'dotenv-rails'
 gem 'hirb'
 gem 'hirb-unicode'
+gem 'therubyracer', platforms: :ruby
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
@@ -32,7 +32,6 @@ group :development, :test do
   gem 'rspec-rails'
   gem 'factory_girl_rails'
   gem 'faker'
-  gem 'faker_japanese'
   gem 'database_cleaner'
   gem 'launchy'
 end
@@ -50,5 +49,4 @@ group :production do
   gem 'database_cleaner'
   gem 'factory_girl_rails'
   gem 'faker'
-  gem 'faker_japanese'
 end
