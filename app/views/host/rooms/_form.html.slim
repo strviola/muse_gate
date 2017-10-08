@@ -21,6 +21,13 @@
             td = address_fields.label 'それ以降の住所'
             td = address_fields.text_field :detail, placeholder: '(例) 南池袋1-28-2'
       tr
+        td = f.label 'ピアノ'
+        td
+          = f.radio_button :has_piano, true
+          = f.label '有'
+          = f.radio_button :has_piano, false
+          = f.label '無'
+      tr
         td = '詳細 (省略可)'
         td = f.text_area :description, size: '60x5'
   = f.submit '送信'

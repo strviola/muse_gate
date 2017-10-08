@@ -43,7 +43,7 @@ class Host::RoomsController < Host::BaseController
 
   def room_params
     params.require(:room).permit(
-      :name, :description,
+      :name, :description, :has_piano,
       address_attributes: [
         :id, :postcode, :prefecture_id, :city, :detail
       ])
