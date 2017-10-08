@@ -22,6 +22,14 @@ class Host::PlansController < Host::BaseController
   end
 
   def update
+    @plan.attributes = plan_params
+    if @plan.save
+      flash[:success] = 'プランを更新しました！'
+      redirect_to edit_host_plan_path(@plan)
+    else
+      flash.now[:errors] = @plan.errors.full_messages
+      render :edit
+    end
   end
 
   private
