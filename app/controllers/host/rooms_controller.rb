@@ -22,7 +22,6 @@ class Host::RoomsController < Host::BaseController
   end
 
   def edit
-    @plans = @room.plans
   end
 
   def update

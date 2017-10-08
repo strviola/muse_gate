@@ -19,9 +19,6 @@ Rails.application.routes.draw do
     get 'menu', to: 'menu#show'
 
     # 練習会場管理
-    resources :rooms, only: [:index, :new, :create, :edit, :update], shallow: true do
-      # 会場使用プラン
-      resources :plans, only: [:new, :create, :edit, :update]
-    end
+    resources :rooms, only: [:index, :new, :create, :edit, :update]
   end
 end
