@@ -20,9 +20,3 @@ main_host = create(:host, name: 'テストホスト', account: host_account)
     create(:room, host: main_host, has_piano: false)
   end
 end
-
-# Plan
-room_with_plan = create(:room, host: main_host, name: '練習室 (プラン作成済)')
-5.times do
-  create(:plan, room: room_with_plan)
-end
