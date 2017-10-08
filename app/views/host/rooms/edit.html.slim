@@ -6,3 +6,25 @@ h1 練習室編集
   = render partial: 'errors', locals: { messages: @room.errors.full_messages }
 
 = render partial: 'form', locals: { room: @room }
+
+h2 プラン一覧
+
+- if @plans.present?
+  table
+    thead
+      tr
+        th 名前
+        th 時間
+        th 価格
+        th 編集
+    tbody
+      - @plans.each do |plan|
+        tr
+          td = plan.name
+          td = "#{plan.available_time}時間"
+          td = "#{plan.price}円"
+          td = link_to '編集', edit_host_room_plan_path(plan)
+- else
+  p プランはまだ作成されていません。
+
+p = link_to '新規作成', new_host_room_plan_path(@room)
