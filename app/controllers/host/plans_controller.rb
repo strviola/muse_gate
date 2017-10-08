@@ -7,6 +7,15 @@ class Host::PlansController < Host::BaseController
   end
 
   def create
+    @plan = Plan.new(plan_params)
+    @plan.room = @room
+    if @plan.save
+      flash[:success] = 'プランの作成に成功しました！'
+      redirect_to edit_host_plan_path(@plan)
+    else
+      flash.now[:errors] = @plan.errors.full_messages
+      render :new
+    end
   end
 
   def edit
@@ -23,5 +32,9 @@ class Host::PlansController < Host::BaseController
 
   def find_plan
     @plan = Plan.find_by(id: params[:id])
+  end
+
+  def plan_params
+    params.require(:plan).permit(:name, :available_time, :price, :description)
   end
 end
