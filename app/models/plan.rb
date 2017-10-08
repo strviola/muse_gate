@@ -18,4 +18,8 @@
 
 class Plan < ApplicationRecord
   belongs_to :room
+
+  %i(name room available_time price).each do |key|
+    validates key, presence: true
+  end
 end
