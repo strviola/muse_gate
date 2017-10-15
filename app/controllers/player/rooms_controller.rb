@@ -5,5 +5,7 @@ class Player::RoomsController < ApplicationController
   end
 
   def show
+    @room = Room.find(params[:id])
+    @plans = @room.plans
   end
 end

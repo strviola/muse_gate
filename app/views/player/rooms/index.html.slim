@@ -9,7 +9,7 @@ table
   tbody
     - @rooms.each do |room|
       tr
-        td = room.name
+        td = link_to room.name, player_room_path(room)
         td = room.address.full_name
         td = room.host.name
 
