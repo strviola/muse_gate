@@ -1,1 +1,19 @@
 h1 = "#{@room.name} の予約"
+
+h2 所在地
+p = @room.address.full_name
+
+h2 管理者
+p = @room.host.name
+
+h2 プラン一覧
+
+table
+  tbody
+    - @plans.each do |plan|
+      tr
+        td = plan.name
+        td = "#{plan.available_time}時間"
+        td = "#{plan.price}円"
+
+p = link_to '戻る', player_rooms_path
