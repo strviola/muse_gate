@@ -12,6 +12,11 @@ RSpec.describe 'Rounting', type: :routing do
       it { expect(delete: '/player/sessions').to route_to controller: 'player/sessions', action: 'destroy' }
     end
 
+    context 'rooms' do
+      it { expect(get: '/player/rooms').to route_to controller: 'player/rooms', action: 'index' }
+      it { expect(get: '/player/rooms/1').to route_to controller: 'player/rooms', action: 'show', id: '1' }
+    end
+
     context 'reservations' do
       it { expect(get: '/player/reservations').to route_to controller: 'player/reservations', action: 'index' }
       it { expect(get: '/player/reservations/1').to route_to controller: 'player/reservations', action: 'show', id: '1' }

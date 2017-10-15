@@ -9,7 +9,7 @@ class Player::SessionsController < ApplicationController
     account = Account.find_by(name: session_params[:name])
     if account&.player? && account&.authenticate(session_params[:password])
       save_session(account, 'player')
-      redirect_to player_reservations_path
+      redirect_to player_menu_path
     else
       render :new
     end

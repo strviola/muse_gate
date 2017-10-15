@@ -7,6 +7,11 @@ Rails.application.routes.draw do
 
     # ログイン・ログアウト
     resource :sessions, only: [:new, :create, :destroy]
+    get 'menu', to: 'menu#show'
+
+    # 練習室一覧
+    resources :rooms, only: [:index, :show]
+
     # 予約
     resources :reservations
   end

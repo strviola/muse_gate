@@ -1,0 +1,16 @@
+h1 練習室一覧
+
+table
+  thead
+    tr
+      th 名前
+      th 所在地
+      th 管理者
+  tbody
+    - @rooms.each do |room|
+      tr
+        td = link_to room.name, player_room_path(room)
+        td = room.address.full_name
+        td = room.host.name
+
+p = link_to '戻る', player_menu_path
