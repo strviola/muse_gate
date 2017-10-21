@@ -12,8 +12,9 @@ table
   tbody
     - @plans.each do |plan|
       tr
-        td = plan.name
+        td = link_to plan.name, new_player_room_reservation_path(@room, plan_id: plan.id)
         td = "#{plan.available_time}時間"
         td = "#{plan.price}円"
+        td = link_to '予約する', new_player_room_reservation_path(@room, plan_id: plan.id)
 
 p = link_to '戻る', player_rooms_path
