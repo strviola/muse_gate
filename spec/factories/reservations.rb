@@ -21,10 +21,11 @@
 
 FactoryGirl.define do
   factory :reservation do
-    plan nil
-    room nil
-    player nil
-    start_time "2017-10-21 12:18:30"
-    end_time "2017-10-21 12:18:30"
+    association :plan
+    association :room
+    association :player
+    start_time { 7.days.from_now.strftime('%Y-%m-%d 10:00') }
+    end_time { 7.days.from_now.strftime('%Y-%m-%d 18:00') }
+    status :initial
   end
 end

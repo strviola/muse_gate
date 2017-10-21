@@ -28,7 +28,7 @@ class Reservation < ApplicationRecord
     validates key, presence: true
   end
 
-  enum :status, {
+  enum status: {
     initial: 1,
     pending: 2,
     fixed: 3,

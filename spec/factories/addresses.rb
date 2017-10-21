@@ -17,9 +17,9 @@
 
 FactoryGirl.define do
   factory :address do
-    postcode '1000005'
-    prefecture_id 13
-    city '千代田区'
-    detail '丸の内一丁目'
+    postcode { '%07d' % rand(9999999) }
+    association :prefecture
+    city { "#{Faker::Japanese::Name.last_name}市" }
+    detail { "#{Faker::Japanese::Name.last_name}#{['町', ''].sample}#{[rand(1..10), rand(1..50), rand(1..50)].join('-')}" }
   end
 end
