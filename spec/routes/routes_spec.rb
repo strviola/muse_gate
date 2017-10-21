@@ -19,12 +19,10 @@ RSpec.describe 'Rounting', type: :routing do
 
     context 'reservations' do
       it { expect(get: '/player/reservations').to route_to controller: 'player/reservations', action: 'index' }
-      it { expect(get: '/player/reservations/1').to route_to controller: 'player/reservations', action: 'show', id: '1' }
-      it { expect(get: '/player/reservations/new').to route_to controller: 'player/reservations', action: 'new' }
-      it { expect(post: '/player/reservations').to route_to controller: 'player/reservations', action: 'create' }
+      it { expect(get: '/player/rooms/1/reservations/new').to route_to controller: 'player/reservations', action: 'new', room_id: '1' }
+      it { expect(post: '/player/rooms/1/reservations').to route_to controller: 'player/reservations', action: 'create', room_id: '1' }
       it { expect(get: '/player/reservations/1/edit').to route_to controller: 'player/reservations', action: 'edit', id: '1' }
       it { expect(patch: '/player/reservations/1').to route_to controller: 'player/reservations', action: 'update', id: '1' }
-      it { expect(delete: '/player/reservations/1').to route_to controller: 'player/reservations', action: 'destroy', id: '1' }
     end
   end
 
@@ -54,6 +52,12 @@ RSpec.describe 'Rounting', type: :routing do
       it { expect(post: '/host/rooms/1/plans').to route_to controller: 'host/plans', action: 'create', room_id: '1' }
       it { expect(get: '/host/plans/1/edit').to route_to controller: 'host/plans', action: 'edit', id: '1' }
       it { expect(patch: '/host/plans/1').to route_to controller: 'host/plans', action: 'update', id: '1' }
+    end
+
+    context 'reservations' do
+      it { expect(get: '/host/reservations').to route_to controller: 'host/reservations', action: 'index' }
+      it { expect(get: '/host/reservations/1/edit').to route_to controller: 'host/reservations', action: 'edit', id: '1' }
+      it { expect(patch: '/host/reservations/1').to route_to controller: 'host/reservations', action: 'update', id: '1' }
     end
   end
 end
