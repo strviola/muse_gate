@@ -23,4 +23,16 @@ class Reservation < ApplicationRecord
   belongs_to :plan
   belongs_to :room
   belongs_to :player
+
+  %i(plan room player start_time end_time status).each do |key|
+    validates key, presence: true
+  end
+
+  enum :status, {
+    initial: 1,
+    pending: 2,
+    fixed: 3,
+    expired: 4,
+    canceled: 5,
+  }
 end
