@@ -1,7 +1,17 @@
+javascript:
+  $(function(){
+    $(".menu_btn").on("click", function() {
+        $(this).next().slideToggle();
+        $(this).toggleClass("active");
+    });
+  });
+span.menu_btn
 .login-links
-  li.side = link_to '演奏者ログイン', player_root_path
-  li = link_to 'ホストログイン', host_root_path
-
+  nav
+    ul
+      li = link_to '演奏者ログイン', player_root_path
+      li = link_to 'ホストログイン', host_root_path
+br
 h1.title Muse Gate
 
 p ピアノと一緒に演奏できる空間をもっと安く、もっと身近に。
