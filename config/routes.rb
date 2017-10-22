@@ -12,7 +12,9 @@ Rails.application.routes.draw do
     # 練習室一覧
     resources :rooms, only: [:index, :show] do
       # 予約新規
-      resources :reservations, only: [:new, :create]
+      resources :reservations, only: [:new, :create] do
+        post :temp, on: :collection
+      end
     end
 
     # 予約確認・編集
