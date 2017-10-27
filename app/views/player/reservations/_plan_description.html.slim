@@ -1,0 +1,16 @@
+h2 会場情報
+
+p
+  = room.name
+  br
+  = room.address.full_name
+
+h3 管理者
+
+p
+  = "#{room.host.name}さん"
+  = mail_to room.host.account.email, '(メール)'
+
+h3 プラン
+
+p = plan.name

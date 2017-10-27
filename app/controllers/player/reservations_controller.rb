@@ -15,10 +15,15 @@ class Player::ReservationsController < Player::BaseController
     @reservation = Reservation.new(session[:reservation].merge(reservation_params))
     @reservation.end_time = @reservation.start_time + @reservation.plan.available_time.hours
     if @reservation.valid?
+      session[:reservation] = @reservation
       render :confirm
     else
       render :new
     end
+  end
+
+  def create
+    binding.pry
   end
 
   def edit
