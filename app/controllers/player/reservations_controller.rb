@@ -6,13 +6,13 @@ class Player::ReservationsController < Player::BaseController
   end
 
   def new
-    @reservation = Reservation.new(room: @room, plan: @plan, status: :initial)
+    @reservation = Reservation.new(
+      room: @room, plan: @plan, status: :initial, player: current_player)
+    session[:reservation] = @reservation
   end
 
   def temp
-    @reservation = Reservation.new(reservation_params)
-    @reservation.player = current_player
-    @reservation.status = :initial
+    @reservation = Reservation.new(session[:reservation].merge(reservation_params))
     @reservation.end_time = @reservation.start_time + @reservation.plan.available_time.hours
     if @reservation.valid?
       render :confirm
@@ -39,6 +39,6 @@ class Player::ReservationsController < Player::BaseController
   end
 
   def reservation_params
-    params.require(:reservation).permit(:room_id, :plan_id, :start_time)
+    params.require(:reservation).permit(:start_time)
   end
 end
