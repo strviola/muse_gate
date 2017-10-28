@@ -1,6 +1,7 @@
 class Player::ReservationsController < Player::BaseController
   before_action :find_reservation, only: [:edit, :update]
   before_action :find_room_plan, only: [:new]
+  before_action :new_reservation_from_session, only: [:temp, :confirm, :create]
 
   def index
   end
@@ -12,7 +13,7 @@ class Player::ReservationsController < Player::BaseController
   end
 
   def temp
-    @reservation = Reservation.new(session[:reservation].merge(reservation_params))
+    @reservation.assign_attributes(reservation_params)
     @reservation.end_time = @reservation.start_time + @reservation.plan.available_time.hours
     if @reservation.valid?
       session[:reservation] = @reservation
@@ -23,11 +24,13 @@ class Player::ReservationsController < Player::BaseController
   end
 
   def confirm
-    @reservation = Reservation.new(session[:reservation])
   end
 
   def create
-    binding.pry
+    @reservation.save
+    session.delete(:reservation)
+    flash[:notice] = true
+    redirect_to controller: 'rooms', action: 'show', id: params[:room_id]
   end
 
   def edit
@@ -49,5 +52,9 @@ class Player::ReservationsController < Player::BaseController
 
   def reservation_params
     params.require(:reservation).permit(:start_time)
+  end
+
+  def new_reservation_from_session
+    @reservation = Reservation.new(session[:reservation])
   end
 end
