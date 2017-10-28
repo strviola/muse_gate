@@ -8,3 +8,7 @@ p
   = l @reservation.start_time
   | 〜
   = l @reservation.end_time
+
+= form_for :reservation, url: { action: :create } do |f|
+  = f.submit '送信する'
+end

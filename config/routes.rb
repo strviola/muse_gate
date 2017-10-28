@@ -14,6 +14,7 @@ Rails.application.routes.draw do
       # 予約新規
       resources :reservations, only: [:new, :create] do
         post :temp, on: :collection
+        get :confirm, on: :collection
       end
     end
 

@@ -1,6 +1,6 @@
 class Player::ReservationsController < Player::BaseController
   before_action :find_reservation, only: [:edit, :update]
-  before_action :find_room_plan, only: [:new, :create]
+  before_action :find_room_plan, only: [:new]
 
   def index
   end
@@ -16,10 +16,14 @@ class Player::ReservationsController < Player::BaseController
     @reservation.end_time = @reservation.start_time + @reservation.plan.available_time.hours
     if @reservation.valid?
       session[:reservation] = @reservation
-      render :confirm
+      redirect_to action: :confirm
     else
       render :new
     end
+  end
+
+  def confirm
+    @reservation = Reservation.new(session[:reservation])
   end
 
   def create
