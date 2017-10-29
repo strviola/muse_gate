@@ -6,9 +6,14 @@ class Host::ReservationsController < Host::BaseController
   end
 
   def edit
+    # 確認した時点でステータスを更新
+    @reservation.update(status: :pending) if @reservation.initial?
   end
 
   def update
+    @reservation.update(status: :fixed)
+    flash[:notice] = '予約が確定しました'
+    redirect_to action: :edit
   end
 
   private

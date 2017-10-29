@@ -1,9 +1,13 @@
+- if flash[:notice]
+  p: b = flash[:notice]
+
 h2 ステータスの編集
 
 = render partial: 'shared/plan_description', locals: { plan: @reservation.plan, room: @reservation.room }
 
-h2 ステータス
+h2 予約の確定
+
+p 以下のボタンをクリックすると予約が確定します。
 
 = form_for [:host, @reservation] do |f|
-  = f.select :status, Reservation.statuses
-  = f.submit '更新'
+  = f.submit '確定'
