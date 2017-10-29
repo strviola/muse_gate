@@ -11,8 +11,12 @@ class Host::ReservationsController < Host::BaseController
   end
 
   def update
-    @reservation.update(status: :fixed)
-    flash[:notice] = '予約が確定しました'
+    @reservation.update(status: reservation_params[:status])
+    if @reservation.fixed?
+      flash[:notice] = '予約が確定しました'
+    elsif @reservation.pending?
+      flash[:notice] = '確定を取り消しました'
+    end
     redirect_to action: :edit
   end
 
@@ -20,5 +24,9 @@ class Host::ReservationsController < Host::BaseController
 
   def find_reservation
     @reservation = Reservation.find(params[:id])
+  end
+
+  def reservation_params
+    params.require(:reservation).permit(:status)
   end
 end
