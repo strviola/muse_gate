@@ -1,0 +1,9 @@
+h2 ステータスの編集
+
+= render partial: 'shared/plan_description', locals: { plan: @reservation.plan, room: @reservation.room }
+
+h2 ステータス
+
+= form_for [:host, @reservation] do |f|
+  = f.select :status, Reservation.statuses
+  = f.submit '更新'
