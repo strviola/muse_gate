@@ -1,4 +1,20 @@
 h1 予約管理
 
-- @reservations.each do |reservation|
-  = reservation.player.name
+table
+  thead
+    tr
+      th 練習室
+      th 対象プラン
+      th 申込者
+      th 開始
+      th 終了
+      th 編集
+  tbody
+    - @reservations.each do |reservation|
+      tr
+        td = reservation.room.name
+        td = reservation.plan.name
+        td = reservation.player.name
+        td = reservation.start_time
+        td = reservation.end_time
+        td = link_to '編集', '#'
