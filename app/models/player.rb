@@ -18,4 +18,6 @@
 class Player < ApplicationRecord
   belongs_to :account
   belongs_to :address
+
+  has_many :reservations
 end

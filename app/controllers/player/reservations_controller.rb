@@ -4,6 +4,7 @@ class Player::ReservationsController < Player::BaseController
   before_action :new_reservation_from_session, only: [:temp, :confirm, :create]
 
   def index
+    @reservations = current_player.reservations
   end
 
   def new
