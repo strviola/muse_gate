@@ -1,0 +1,30 @@
+- if flash[:notice]
+  p: b = flash[:notice]
+
+h1 ステータスの編集
+
+= render partial: 'shared/plan_description', locals: { plan: @reservation.plan, room: @reservation.room }
+
+h2 予約の確定
+
+= form_for [:host, @reservation] do |f|
+  - case @reservation.status
+  - when 'pending'
+  
+    p 以下のボタンをクリックすると予約が確定します。
+    = f.hidden_field :status, value: :fixed
+    = f.submit '確定'
+
+  - when 'fixed'
+    
+    p 予約は確定済みです。
+    = f.hidden_field :status, value: :pending
+    = f.submit '確定を取り消す'
+
+  - when 'expired'
+  
+    p 予約の有効期限を過ぎました。
+    
+  - when 'canceled'
+  
+    p 申込者によってキャンセルされました。

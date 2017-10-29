@@ -10,10 +10,16 @@ Rails.application.routes.draw do
     get 'menu', to: 'menu#show'
 
     # 練習室一覧
-    resources :rooms, only: [:index, :show]
+    resources :rooms, only: [:index, :show] do
+      # 予約新規
+      resources :reservations, only: [:new, :create] do
+        post :temp, on: :collection
+        get :confirm, on: :collection
+      end
+    end
 
-    # 予約
-    resources :reservations
+    # 予約確認・編集
+    resources :reservations, only: [:index, :edit, :update]
   end
 
   namespace :host do
@@ -28,5 +34,8 @@ Rails.application.routes.draw do
       # 会場使用プラン
       resources :plans, only: [:new, :create, :edit, :update]
     end
+
+    # 予約管理
+    resources :reservations, only: [:index, :edit, :update]
   end
 end

@@ -1,0 +1,17 @@
+h1 新規予約申し込み
+
+= render partial: 'shared/plan_description', locals: { plan: @plan, room: @room }
+
+h2 開始日時を指定する
+
+p 終了時刻は、プランに合わせて自動的に設定されます。
+
+= form_for [:player, @reservation], url: { action: :temp } do |f|
+  p
+    = f.datetime_select :start_time,
+        use_month_numbers: true,
+        default: Date.tomorrow + 12.hours,
+        date_separator: '/',
+        time_separator: ':'
+
+  = f.submit '確認画面へ'

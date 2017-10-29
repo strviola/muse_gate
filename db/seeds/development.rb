@@ -6,7 +6,7 @@ include FactoryGirl::Syntax::Methods
 
 # Player
 player_account = create(:account, :player, name: 'test_player')
-create(:player, name: 'テスト演奏者', account: player_account)
+main_player = create(:player, name: 'テスト演奏者', account: player_account)
 
 # Host
 host_account = create(:account, :host, name: 'test_host')
@@ -23,6 +23,7 @@ end
 
 # Plan
 room_with_plan = create(:room, host: main_host, name: '練習室 (プラン作成済)')
-5.times do
-  create(:plan, room: room_with_plan)
-end
+plans = create_list(:plan, 5, room: room_with_plan)
+
+# Reservation
+create(:reservation, room: room_with_plan, plan: plans[0], player: main_player)

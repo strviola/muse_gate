@@ -1,3 +1,18 @@
 h1 予約一覧
 
-p = "ようこそ #{@player.name} さん"
+table
+  thead
+    tr
+      th 練習室
+      th 開始
+      th 終了
+      th ステータス
+  tbody
+    - @reservations.each do |reservation|
+      tr
+        td = reservation.room.name
+        td = reservation.start_time.to_s
+        td = reservation.end_time.to_s
+        td = reservation.status
+
+= link_to '戻る', player_menu_path

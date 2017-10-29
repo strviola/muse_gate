@@ -1,3 +1,7 @@
+- if flash[:notice]
+  p: b 予約を申し込みました。
+  p ※ホストが予約内容を確認するまで予約は確定しません。
+
 h1 = "#{@room.name} の予約"
 
 h2 所在地
@@ -12,8 +16,9 @@ table
   tbody
     - @plans.each do |plan|
       tr
-        td = plan.name
+        td = link_to plan.name, new_player_room_reservation_path(@room, plan_id: plan.id)
         td = "#{plan.available_time}時間"
         td = "#{plan.price}円"
+        td = link_to '予約する', new_player_room_reservation_path(@room, plan_id: plan.id)
 
 p = link_to '戻る', player_rooms_path

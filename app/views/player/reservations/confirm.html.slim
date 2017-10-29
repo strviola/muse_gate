@@ -1,0 +1,14 @@
+h1 予約確認
+
+= render partial: 'shared/plan_description', locals: { plan: @reservation.plan, room: @reservation.room }
+
+h2 希望時間
+
+p
+  = l @reservation.start_time
+  | 〜
+  = l @reservation.end_time
+
+= form_for :reservation, url: { action: :create } do |f|
+  = f.submit '送信する'
+end
