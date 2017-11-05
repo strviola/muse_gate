@@ -7,6 +7,19 @@ html
     = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload'
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
     = javascript_include_tag 'https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js'
-
+    javascript:
+      $(function(){
+        $(".menu_btn").on("click", function() {
+            $(this).next().slideToggle();
+            $(this).toggleClass("active");
+        });
+      });
   body
+    span.menu_btn
+    .login-links
+      nav
+        ul
+          li = link_to '演奏者ログイン', player_root_path
+          li = link_to 'ホストログイン', host_root_path
+    h1.title MuseGate
     = yield
