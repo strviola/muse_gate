@@ -1,15 +1,15 @@
-h1 ログイン
-
-= form_for :session, url: { controller: :sessions, action: :create } do |f|
-  table
-    tbody
-      tr
-        td = f.label 'ログインID'
-        td = f.text_field :name
-      tr
-        td = f.label 'パスワード'
-        td = f.password_field :password
-      tr
-        td = f.submit 'ログイン'
-
-= link_to '戻る', root_path
+.player_form-wrapper
+  form
+    .player_form-item
+      label for="id" 
+      input name="id" placeholder="id" required="required"  /
+    .player_form-item
+      label for="password" 
+      input name="password" placeholder="パスワード" required="required" type="password" /
+    .player_button-panel
+      input.button title=("ログイン") type="submit" value="ログイン"
+  .player_form-footer
+    p
+      a href="#"  新規登録
+    p
+      a href="#"  パスワードを忘れた場合はこちらへ
